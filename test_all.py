@@ -16,14 +16,7 @@ from torch.utils.data import DataLoader
 
 from data.argoverse.argo_csv_dataset import ArgoCSVDataset
 from data.argoverse.utils.torch_utils import collate_fn_dict
-from model.MMF_v1 import MMF
-from model.MMF_v2 import MMF as MMF_v2
 from model.MFSTMF_CN import MFSTMF
-from model.MFSTMF_wo_ST import MFSTMF_wo_ST
-from model.MFSTMF_wo_TS import MFSTMF_wo_TS
-from model.TFMF_TGR import TMFModel
-from model.crat_pred import CratPred
-from model.baseline.LSTM import LSTM_
 from init_args import init_args
 
 
@@ -38,8 +31,7 @@ parser = init_args(parser)
 
 parser.add_argument("--split", choices=["val", "test"], default="test")
 # parser.add_argument("--ckpt_path", type=str, default="train_log/MFSTMF.ckpt")
-parser.add_argument("--model", type=str, default="MFMF_gate",choices = ['MFSTMF', 'CratPred','CratPred-ori','TMFModel','MFMF_bz128',
-                                                                      'LSTM_','MFSTMF_wo_ST' ,'MFSTMF_wo_TS','MFMF_v2' ])
+parser.add_argument("--model", type=str, default="MFSTMF",choices = ['MFSTMF'])
 
 
 ckpt_path = {
