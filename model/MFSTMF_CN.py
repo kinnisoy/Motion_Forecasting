@@ -87,7 +87,7 @@ class MFSTMF(pl.LightningModule):
         parser_model.add_argument("--latent_size", type=int, default=64)
         parser_model.add_argument("--map2actor_dist", type=int, default=100)
 
-        parser_model.add_argument("--num_scales", type=int, default=3)  # 多尺度预测 考虑几阶邻居 不同尺度
+        parser_model.add_argument("--num_scales", type=int, default=3)  
         parser_model.add_argument("--num_preds", type=int, default=60)
         parser_model.add_argument("--mod_steps", type=list, default=[1, 5])
         parser_model.add_argument("--mod_freeze_epoch", type=int, default=36)
@@ -103,7 +103,7 @@ class MFSTMF(pl.LightningModule):
                     module.eval()
         '''
         # displ_shape & centers_shape [batch,agents_num, in_size]  in_size_displ = 3 \in_size_centers = 3
-        # rotation [batch_size,2,2] n个旋转归一化矩阵 ; origin[batch_size,2] cause it's a point.
+        # rotation [batch_size,2,2] ; origin[batch_size,2] cause it's a point.
         '''
         displ, centers = batch["displ"], batch["centers"]
         rotation, origin = batch["rotation"], batch["origin"]
@@ -111,7 +111,7 @@ class MFSTMF(pl.LightningModule):
         # Extract the number of agents in each sample of the current batch
         agents_per_sample = [x.shape[0] for x in displ]
 
-        # displ[22,49,3] [Num_Agents,Time_Step_Train,二维坐标+一个标记位]
+       
         # Note,Atfer CONCAT the  Num_Agents = sum(agents_per_sample)
         displ_cat = torch.cat(displ, dim=0)
         centers_cat = torch.cat(centers, dim=0)
