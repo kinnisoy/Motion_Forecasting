@@ -4,7 +4,7 @@
 # @Author  ：kinnisoy
 # @Date    ：03.28 028 上午 10:13 
 # @File    ：generate_pred_parquet.py
-# @Description : 生成用来画图的预测轨迹 generate the prediction value in parquet file.
+# @Description : generate the prediction value in parquet file.
 '''
 import argparse
 import math
@@ -37,11 +37,11 @@ parser = argparse.ArgumentParser()
 parser = init_args(parser)
 
 # parser.set_argument("--use_preprocessed", type=bool, default=False)
-# Todo: 运行的时候，把 “--use_preprocessed" 设置为 False ，这时候是直接读取数据，还没有预处理。
+
 parser.add_argument("--viz_split", type=str,default=os.path.join(
                 root_path, "dataset", "argoverse2", "to_viz"))
 parser.add_argument("--ckpt_path", type=str,
-                    default="train_log/0406-MFSTMF-CN_version_0（FullDataSet）/MFSTMF.ckpt")
+                    default="train_log/MFSTMF.ckpt")
 os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
 PredictionRow = Tuple[str, list]
 Prediction: Final[List[str]] = [
