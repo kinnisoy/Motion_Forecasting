@@ -44,40 +44,12 @@ parser.add_argument("--model", type=str, default="MFMF_gate",choices = ['MFSTMF'
 
 ckpt_path = {
     'MFSTMF' : "train_log/0406-MFSTMF-CN_version_0（FullDataSet）/MFSTMF.ckpt",
-    'CratPred' : "train_log/0406-CradPred-version_0（FullDataSet）/CradPred.ckpt",
-    'CratPred-ori':"checkpoints/bak/Crad_Pred.ckpt",
-    'LSTM_':"train_log/0410-LSTM_Residual_version_0/LSTM_Residual.ckpt",
-    'MFSTMF_wo_ST' : "train_log/0412-MFSTMF_wo_ST_version_0/MFSTMF_wo_ST.ckpt",
-    'MFSTMF_wo_TS' : "train_log/0417-MFSTMF_wo_TS_version_0/MFSTMF_wo_TS.ckpt",
-    "MFMF": "train_log/0422-MFMF-EN_version_1/MFMF-EN.ckpt",
-    "MFMF_bz128": "train_log/0517-MFMF-EN_version_0/MFMF-EN.ckpt",
-    "MFMF_gate": "train_log/0619-MFMF_EN_h64b72_Gate_Fusion_version_1/MFMF_GateFusion.ckpt"
-    #  "MFMF_gate": "train_log/0528-MFMF-EN_version_0_FusionST&Gate/MFMF-EN.ckpt"
 }
 
 
 def get_model(args):
     if(args.model == 'MFSTMF'):
         model = MFSTMF.load_from_checkpoint(checkpoint_path=ckpt_path[args.model])
-    # Todo: 新增两个消融模型。
-    elif (args.model == 'MFSTMF_wo_ST'):
-        model = MFSTMF_wo_ST.load_from_checkpoint(checkpoint_path=ckpt_path[args.model])
-    elif (args.model == 'MFSTMF_wo_TS'):
-        model = MFSTMF_wo_TS.load_from_checkpoint(checkpoint_path=ckpt_path[args.model])
-    elif(args.model == 'CratPred'):
-        model = CratPred.load_from_checkpoint(checkpoint_path=ckpt_path[args.model])
-    elif(args.model =='TMFModel'):
-        model = TMFModel.load_from_checkpoint(checkpoint_path=ckpt_path[args.model])
-    elif (args.model == 'LSTM_'):
-        model = LSTM_.load_from_checkpoint(checkpoint_path=ckpt_path[args.model])
-    elif(args.model == 'MFMF'):
-        model = MMF.load_from_checkpoint(checkpoint_path=ckpt_path[args.model])
-    elif (args.model == 'MFMF_bz128'):
-        model = MMF.load_from_checkpoint(checkpoint_path=ckpt_path[args.model])
-    elif (args.model == 'MFMF_gate'):
-        model = MMF_v2.load_from_checkpoint(checkpoint_path=ckpt_path[args.model])
-    else:
-        model = CratPred.load_from_checkpoint(checkpoint_path=ckpt_path[args.model])
     print(args.model)
     return model
 
