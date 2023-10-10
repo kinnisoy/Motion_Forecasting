@@ -37,13 +37,13 @@ parser = argparse.ArgumentParser()
 parser = init_args(parser)
 
 parser.add_argument("--split", choices=["val", "test"], default="test")
-# parser.add_argument("--ckpt_path", type=str, default="train_log/0406-MFSTMF-CN_version_0（FullDataSet）/MFSTMF.ckpt")
+# parser.add_argument("--ckpt_path", type=str, default="train_log/MFSTMF.ckpt")
 parser.add_argument("--model", type=str, default="MFMF_gate",choices = ['MFSTMF', 'CratPred','CratPred-ori','TMFModel','MFMF_bz128',
                                                                       'LSTM_','MFSTMF_wo_ST' ,'MFSTMF_wo_TS','MFMF_v2' ])
 
 
 ckpt_path = {
-    'MFSTMF' : "train_log/0406-MFSTMF-CN_version_0（FullDataSet）/MFSTMF.ckpt",
+    'MFSTMF' : "train_log/MFSTMF.ckpt",
 }
 
 
